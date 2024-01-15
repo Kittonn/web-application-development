@@ -3,6 +3,78 @@
 
 <head>
   <title>Page Title</title>
+
+  <style>
+    body {
+      padding: 0;
+      margin: 0 auto;
+      width: 50%;
+    }
+
+    h1,
+    footer {
+      text-align: center;
+      color: blue;
+      background-color: yellow;
+    }
+
+    h2 {
+      text-align: center;
+      color: violet;
+    }
+
+    .reporter {
+      color: lightskyblue;
+    }
+
+    .reporter time {
+      color: magenta;
+    }
+
+    .reporter img {
+      border: 3px solid royalblue;
+      float: right;
+    }
+
+    article {
+      clear: both;
+      display: flex;
+    }
+
+    article>section {
+      flex: 1;
+    }
+
+    aside {
+      float: right;
+      border-top: 3px solid black;
+      border-bottom: 3px solid black;
+      width: 35%;
+      transform: translateY(-12%);
+    }
+
+    aside p {
+      font-size: 2.5rem;
+    }
+
+    .luckd {
+      width: fit-content;
+    }
+
+    progress[value] {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    progress[value]::-webkit-progress-bar {
+      border: 1px solid gray;
+      background-image: repeating-linear-gradient(90deg, white 0 calc(10% - 1px), lightgray 1px 10%);
+    }
+
+    progress[value]::-webkit-progress-value {
+      background-color: skyblue;
+    }
+  </style>
 </head>
 
 <body>
@@ -15,8 +87,8 @@
   <div class="reporter">
     <img
       src="https://previews.123rf.com/images/gmast3r/gmast3r1809/gmast3r180900199/109840480-brunette-businessman-avatar-man-face-profile-icon-concept-online-support-service-male-cartoon-charac.jpg"
-      alt="picture" width=200>Reported by <br>Mr. or Ms. Xxxx xxxx<br> (nickname)<br> ID yyyyyyyy<br><br><time
-      datetime="2020-02-14">Feb 14, 2020</time>
+      alt="picture" width=200>Reported by <br>Mr. Kittipod Lambangchang<br> (Kitton)<br> ID 65010077<br><br><time
+      datetime="2004-04-23">Apr 23, 2004</time>
 
   </div>
   <article>
