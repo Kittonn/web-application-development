@@ -3,6 +3,71 @@
 
 <head>
   <title>Page Title</title>
+
+  <style>
+    body {
+      padding: 0;
+      margin: 0 auto;
+      width: 60%;
+    }
+
+    body>:not(header, footer) {
+      margin: 0 5%;
+    }
+
+    h1,
+    footer {
+      text-align: center;
+      color: blue;
+      background-color: yellow;
+    }
+
+    h2 {
+      text-align: center;
+      color: violet;
+    }
+
+    .reporter {
+      color: lightskyblue;
+    }
+
+    .reporter time {
+      color: magenta;
+      font-style: italic;
+    }
+
+    .reporter img {
+      border: 3px solid royalblue;
+      float: right;
+    }
+
+    article {
+      clear: both;
+      display: flex;
+    }
+
+    article>section {
+      flex: 1;
+    }
+
+    aside {
+      float: right;
+      border-top: 3px solid black;
+      border-bottom: 3px solid black;
+      transform: translateY(-12%);
+      font-size: 2.5rem;
+      width: 45%;
+    }
+
+    aside p {
+      width: 70%;
+    }
+
+    .luckd {
+      margin-top: 2rem;
+      width: fit-content;
+    }
+  </style>
 </head>
 
 <body>
