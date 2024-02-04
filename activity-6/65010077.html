@@ -4,20 +4,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Activity 06</title>
+  <title>CE | KMITL</title>
 
+  <!-- Boostrap v.5.2.3 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Prompt:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+
+  <style>
+    html {
+      scrollbar-width: thin;
+      scroll-behavior: smooth;
+    }
+
+    .font-poppins {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .font-prompt {
+      font-family: 'Prompt', sans-serif;
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .classroom-img-container {
+      width: 400px;
+      height: 300px;
+    }
+
+    .text-orange {
+      color: #fd7e14;
+    }
+
+    .bg-tuition {
+      position: relative;
+      width: 100%;
+      height: max-content;
+      background-image: url("https://www.kmitlalumni.org/wp-content/uploads/2023/01/%E0%B8%AA%E0%B8%88%E0%B8%A5-2.jpg");
+      background-size: cover;
+      background-position: 50% 60%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+
+    .bg-tuition::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    }
+
+    .tuition-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .application-card {
+      width: 300px;
+    }
+
+    .home-logo {
+      width: 400px;
+      height: 400px;
+      overflow: hidden;
+    }
+  </style>
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg bg-light fixed-top">
+  <header class="font-poppins">
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
       <div class="container-xl">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <div class="d-flex align-items-center gap-2">
+          <div class="logo">
+            <img src="https://curriculum.kmitl.ac.th/wp-content/uploads/2021/08/%E0%B8%84%E0%B8%AD%E0%B8%A1-2.png"
+              alt="">
+          </div>
+          <a class="navbar-brand" href="#">CE KMITL</a>
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -25,74 +114,86 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end w-100">
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Application</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Tuition</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Curriculum</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Why</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Opportunity</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Contact</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#application">Application</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#tuition">Tuition</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#why">Why</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#opportunity">Opportunity</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#classroom">Classroom</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#contact">Contact</a></li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
-  <main>
-    <section class="container-xl">
-
-      <div>
-        <p>คณะวิศวกรรมศาสตร์</p>
+  <main class="font-prompt">
+    <section class="container-xl px-3 pt-5 min-vh-100 d-flex justify-content-center align-items-center gap-5 flex-wrap">
+      <div class="">
+        <p class="fs-4 text-danger">คณะวิศวกรรมศาสตร์</p>
         <h2>หลักสูตร วศ.บ.</h2>
-        <h1>วิศวกรรมคอมพิวเตอร์</h1>
-        <div>
-          <a href="" target="_blank">วิศวกรรมคอมพิวเตอร์</a>
-          <a href="">เล่มหลักสูตรวิศวกรรมคอมพิวเตอร์</a>
+        <h1 class="text-orange">วิศวกรรมคอมพิวเตอร์</h1>
+        <div class="d-flex flex-column gap-3 mt-5">
+          <a href="" target="_blank" class="bg-white shadow p-3 rounded-2 text-decoration-none text-danger"
+            style="width: fit-content;"><span class="me-2"><i
+                class="fa-solid fa-file-pdf"></i></span>วิศวกรรมคอมพิวเตอร์</a>
+          <a href="" target="_blank" class="bg-white shadow p-3 rounded-2 text-decoration-none text-danger"
+            style="width: fit-content;"><span class="me-2"><i
+                class="fa-solid fa-file-pdf"></i></span>เล่มหลักสูตรวิศวกรรมคอมพิวเตอร์</a>
         </div>
       </div>
-      <img src="https://curriculum.kmitl.ac.th/wp-content/uploads/2021/08/%E0%B8%84%E0%B8%AD%E0%B8%A1-2.png" alt="">
+      <div class="bg-white shadow home-logo rounded-4">
+        <img src="https://curriculum.kmitl.ac.th/wp-content/uploads/2021/08/%E0%B8%84%E0%B8%AD%E0%B8%A1-2.png" alt="">
+      </div>
     </section>
 
-    <section class="container-xl">
-      <h3>กำหนดการเปิดรับสมัคร</h3>
-      <div>
-        <p>TCAS 1</p>
-        <p>Portfolio</p>
-        <p>1 - 20</p>
-        <p>ธ.ค. 2566</p>
-        <hr>
-        <p>รับสมัครจำนวน</p>
-        <p>40</p>
-        <p>คน</p>
-      </div>
-      <div>
-        <p>TCAS 2</p>
-        <p>โควตา</p>
-        <p>รอประกาศ</p>
-        <p>รอประกาศ 2567</p>
-        <hr>
-        <p>รับสมัครจำนวน</p>
-        <p>40</p>
-        <p>คน</p>
-      </div>
-      <div>
-        <p>TCAS 1</p>
-        <p>Admission</p>
-        <p>รอประกาศ</p>
-        <p>รอประกาศ 2567</p>
-        <hr>
-        <p>รับสมัครจำนวน</p>
-        <p>20</p>
-        <p>คน</p>
-      </div>
-    </section>
-    <section class="container-xl">
-      <div>
-        <h3>ค่าธรรมเนียมการศึกษา</h3>
-        <p>25,000</p>
-        <p>บาท / ภาคการศึกษา</p>
+    <section class="container-xl px-3 py-5" id="application">
+      <h3 class="mt-4 text-danger text-center fs-2">กำหนดการเปิดรับสมัคร</h3>
+      <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center">
+        <div class="bg-white shadow p-3 rounded-3 text-center application-card">
+          <p class="fs-5 text-danger fw-semibold">TCAS 1</p>
+          <p class="text-danger lh-1">Portfolio</p>
+          <p class="fs-1 fw-bold">1 - 20</p>
+          <p class="text-secondary">ธ.ค. 2566</p>
+          <hr>
+          <p class="fs-5 text-secondary">รับสมัครจำนวน</p>
+          <p class="fs-1 fw-bold text-danger">40</p>
+          <p class="text-secondary">คน</p>
+        </div>
+        <div class="bg-white shadow p-3 rounded-3 text-center application-card">
+          <p class="fs-5 text-danger fw-semibold">TCAS 2</p>
+          <p class="text-danger lh-1">โควตา</p>
+          <p class="fs-1 fw-bold">รอประกาศ</p>
+          <p class="text-secondary">รอประกาศ 2567</p>
+          <hr>
+          <p class="fs-5 text-secondary">รับสมัครจำนวน</p>
+          <p class="fs-1 fw-bold text-danger">40</p>
+          <p class="text-secondary">คน</p>
+        </div>
+        <div class="bg-white shadow p-3 rounded-3 text-center application-card">
+          <p class="fs-5 text-danger fw-semibold">TCAS 1</p>
+          <p class="text-danger lh-1">Admission</p>
+          <p class="fs-1 fw-bold">รอประกาศ</p>
+          <p class="text-secondary">รอประกาศ 2567</p>
+          <hr>
+          <p class="fs-5 text-secondary">รับสมัครจำนวน</p>
+          <p class="fs-1 fw-bold text-danger">20</p>
+          <p class="text-secondary">คน</p>
+        </div>
       </div>
     </section>
-    <section class="container-xl">
-      <h3>ทำไมต้องเรียน วศ.บ. วิศวกรรมคอมพิวเตอร์ ที่ สจล. ?</h3>
+    <section class="container-xl px-3" id="tuition">
+      <div class="bg-tuition rounded-4 py-5">
+        <div class="mt-4 text-center text-white tuition-content">
+          <p class="fs-1"><i class="fa-solid fa-school"></i></p>
+          <h3 class="fs-3 fw-bold">ค่าธรรมเนียมการศึกษา</h3>
+          <p class="fs-1 fw-bold">25,000</p>
+          <p class="fs-5 fw-medium">บาท / ภาคการศึกษา</p>
+        </div>
+      </div>
+    </section>
+    <section class="container-xl px-3 pt-5" id="why">
+      <h3 class="text-danger mt-4 fs-2">ทำไมต้องเรียน วศ.บ. วิศวกรรมคอมพิวเตอร์ <span class="text-orange">ที่ สจล.
+          ?</span>
+      </h3>
       <p>ความรู้หรือทักษะที่บัณฑิตจะได้เมื่อสำเร็จการศึกษาจากที่นี่</p>
       <ul>
         <li>มีความรู้ทางคณิตศาสตร์ วิทยาศาสตร์ ที่เป็นพื้นฐานของวิศวกรรมคอมพิวเตอร์อย่างเพียงพอ</li>
@@ -104,8 +205,8 @@
         <li>มีความรับผิดชอบต่อสังคม ชุมชน และสิ่งแวดล้อม ดัวยความตระหนักในจริยธรรมทางวิชาชีพ</li>
       </ul>
     </section>
-    <section class="container-xl">
-      <h3>โอกาสในการหางาน</h3>
+    <section class="container-xl px-3 pt-5" id="opportunity">
+      <h3 class="text-danger mt-4 fs-2">โอกาสในการหางาน</h3>
       <ul>
         <li>วิศวกรคอมพิวเตอร์</li>
         <li>นักวิชาการคอมพิวเตอร์</li>
@@ -118,18 +219,58 @@
       </ul>
       <p>ในปัจจุบันนักศึกษาที่จบหลักสูตรนี้จะได้รับเงินเดือนโดยเฉลี่ยประมาณ 25,000-35,000 บาทต่อเดือน</p>
     </section>
-    <section>
-      <h3>ติดต่อเรา</h3>
-      <p>
-        สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง<br>
-        เลขที่ 1 ซอยฉลองกรุง 1 แขวงลาดกระบัง<br>
-        เขตลาดกระบัง กรุงเทพฯ 10520
-      </p>
+    <section class="container-xl px-3 py-5" id="classroom">
+      <div class="text-center my-4">
+        <p class="fs-1 "><i class="fa-solid fa-users-gear"></i></p>
+        <h3 class="fs-2">บรรยากาศการเรียน</h3>
+      </div>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <div class="classroom-img-container">
+          <img
+            src="https://curriculum.kmitl.ac.th/wp-content/uploads/2021/08/%E0%B8%A7%E0%B8%A8.%E0%B8%9A.-%E0%B8%A7%E0%B8%B4%E0%B8%A8%E0%B8%A7%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C-1.png"
+            alt="">
+        </div>
+        <div class="classroom-img-container">
+          <img
+            src="https://curriculum.kmitl.ac.th/wp-content/uploads/2021/08/%E0%B8%A7%E0%B8%A8.%E0%B8%9A.-%E0%B8%A7%E0%B8%B4%E0%B8%A8%E0%B8%A7%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C-3.png"
+            alt="">
+        </div>
+        <div class="classroom-img-container">
+          <img
+            src="https://curriculum.kmitl.ac.th/wp-content/uploads/2021/08/%E0%B8%A7%E0%B8%A8.%E0%B8%9A.-%E0%B8%A7%E0%B8%B4%E0%B8%A8%E0%B8%A7%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C-9.png"
+            alt="">
+        </div>
+        <div class="classroom-img-container">
+          <img
+            src="https://curriculum.kmitl.ac.th/wp-content/uploads/2021/08/%E0%B8%A7%E0%B8%A8.%E0%B8%9A.-%E0%B8%A7%E0%B8%B4%E0%B8%A8%E0%B8%A7%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C-2.png"
+            alt="">
+        </div>
+        <div class="classroom-img-container">
+          <img
+            src="https://curriculum.kmitl.ac.th/wp-content/uploads/2021/08/%E0%B8%A7%E0%B8%A8.%E0%B8%9A.-%E0%B8%A7%E0%B8%B4%E0%B8%A8%E0%B8%A7%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C-7.png"
+            alt="">
+        </div>
+        <div class="classroom-img-container">
+          <img
+            src="https://curriculum.kmitl.ac.th/wp-content/uploads/2021/08/%E0%B8%A7%E0%B8%A8.%E0%B8%9A.-%E0%B8%A7%E0%B8%B4%E0%B8%A8%E0%B8%A7%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C-11.png"
+            alt="">
+        </div>
+      </div>
     </section>
-    <footer>
-      &copy; 2024 KMITL CURRICULUM. ALL RIGHTS RESERVED.
-    </footer>
+    <section class="bg-dark " id="contact">
+      <div class="container-xl text-white px-3 py-5">
+        <h3>ติดต่อเรา</h3>
+        <p class="mt-3">
+          สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง<br>
+          เลขที่ 1 ซอยฉลองกรุง 1 แขวงลาดกระบัง<br>
+          เขตลาดกระบัง กรุงเทพฯ 10520
+        </p>
+      </div>
+    </section>
   </main>
+  <footer class="font-poppins bg-dark p-1">
+    <p class="text-center text-white fs-6">&copy; 2024 KMITL CURRICULUM. ALL RIGHTS RESERVED.</p>
+  </footer>
 </body>
 
 </html>
