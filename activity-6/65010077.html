@@ -23,7 +23,6 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
-
   <style>
     html {
       scrollbar-width: thin;
@@ -89,14 +88,15 @@
     }
 
     .home-logo {
-      width: 400px;
-      height: 400px;
+      max-width: 400px;
+      max-height: 400px;
       overflow: hidden;
     }
   </style>
 </head>
 
 <body>
+  <!-- Navbar -->
   <header class="font-poppins">
     <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
       <div class="container-xl">
@@ -125,26 +125,35 @@
       </div>
     </nav>
   </header>
+
+  <!-- Main -->
   <main class="font-prompt">
-    <section class="container-xl px-3 pt-5 min-vh-100 d-flex justify-content-center align-items-center gap-5 flex-wrap">
-      <div class="">
+    <!-- Home -->
+    <section
+      class="container-xl px-3 pt-5 min-vh-100 d-flex justify-content-sm-around align-items-center gap-5 flex-wrap">
+      <div class="d-flex align-items-start flex-column">
         <p class="fs-4 text-danger">คณะวิศวกรรมศาสตร์</p>
         <h2>หลักสูตร วศ.บ.</h2>
         <h1 class="text-orange">วิศวกรรมคอมพิวเตอร์</h1>
         <div class="d-flex flex-column gap-3 mt-5">
-          <a href="" target="_blank" class="bg-white shadow p-3 rounded-2 text-decoration-none text-danger"
-            style="width: fit-content;"><span class="me-2"><i
-                class="fa-solid fa-file-pdf"></i></span>วิศวกรรมคอมพิวเตอร์</a>
-          <a href="" target="_blank" class="bg-white shadow p-3 rounded-2 text-decoration-none text-danger"
+          <a href="https://drive.google.com/file/d/16RRwdsDkLfrPNShVT3zSWqzwU6ijidXz/view" target="_blank"
+            class="bg-white shadow p-3 rounded-2 text-decoration-none text-danger" style="width: fit-content;"><span
+              class="me-2"><i class="fa-solid fa-file-pdf"></i></span>วิศวกรรมคอมพิวเตอร์</a>
+          <a href="https://www.reg.kmitl.ac.th/curriculum/file/bachelor/01/ce_con_c2564edit1.pdf?curr=634"
+            target="_blank" class="bg-white shadow p-3 rounded-2 text-decoration-none text-danger"
             style="width: fit-content;"><span class="me-2"><i
                 class="fa-solid fa-file-pdf"></i></span>เล่มหลักสูตรวิศวกรรมคอมพิวเตอร์</a>
         </div>
       </div>
-      <div class="bg-white shadow home-logo rounded-4">
+      <div class="bg-white shadow home-logo rounded-4 d-none d-sm-block">
+        <img src="https://curriculum.kmitl.ac.th/wp-content/uploads/2021/08/%E0%B8%84%E0%B8%AD%E0%B8%A1-2.png" alt="">
+      </div>
+      <div class="bg-white shadow home-logo rounded-4 d-block d-sm-none w-100">
         <img src="https://curriculum.kmitl.ac.th/wp-content/uploads/2021/08/%E0%B8%84%E0%B8%AD%E0%B8%A1-2.png" alt="">
       </div>
     </section>
 
+    <!-- Application -->
     <section class="container-xl px-3 py-5" id="application">
       <h3 class="mt-4 text-danger text-center fs-2">กำหนดการเปิดรับสมัคร</h3>
       <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center">
@@ -180,6 +189,8 @@
         </div>
       </div>
     </section>
+
+    <!-- Tuition -->
     <section class="container-xl px-3" id="tuition">
       <div class="bg-tuition rounded-4 py-5">
         <div class="mt-4 text-center text-white tuition-content">
@@ -190,6 +201,8 @@
         </div>
       </div>
     </section>
+
+    <!-- Why -->
     <section class="container-xl px-3 pt-5" id="why">
       <h3 class="text-danger mt-4 fs-2">ทำไมต้องเรียน วศ.บ. วิศวกรรมคอมพิวเตอร์ <span class="text-orange">ที่ สจล.
           ?</span>
@@ -205,6 +218,8 @@
         <li>มีความรับผิดชอบต่อสังคม ชุมชน และสิ่งแวดล้อม ดัวยความตระหนักในจริยธรรมทางวิชาชีพ</li>
       </ul>
     </section>
+
+    <!-- Opportunity -->
     <section class="container-xl px-3 pt-5" id="opportunity">
       <h3 class="text-danger mt-4 fs-2">โอกาสในการหางาน</h3>
       <ul>
@@ -219,6 +234,8 @@
       </ul>
       <p>ในปัจจุบันนักศึกษาที่จบหลักสูตรนี้จะได้รับเงินเดือนโดยเฉลี่ยประมาณ 25,000-35,000 บาทต่อเดือน</p>
     </section>
+
+    <!-- Classroom -->
     <section class="container-xl px-3 py-5" id="classroom">
       <div class="text-center my-4">
         <p class="fs-1 "><i class="fa-solid fa-users-gear"></i></p>
@@ -257,6 +274,8 @@
         </div>
       </div>
     </section>
+
+    <!-- Contact -->
     <section class="bg-dark " id="contact">
       <div class="container-xl text-white px-3 py-5">
         <h3>ติดต่อเรา</h3>
@@ -268,6 +287,8 @@
       </div>
     </section>
   </main>
+
+  <!-- Footer -->
   <footer class="font-poppins bg-dark p-1">
     <p class="text-center text-white fs-6">&copy; 2024 KMITL CURRICULUM. ALL RIGHTS RESERVED.</p>
   </footer>
