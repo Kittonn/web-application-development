@@ -63,15 +63,19 @@
             element.style.backgroundColor = 'yellow';
         }
 
+        function handleImageChange(image) {
+            const defaultImage = document.querySelector('img');
+            defaultImage.src = image
+        }
+
         const mainContainer = document.getElementById('maincontainer');
 
         const titleElement = createTagElement('h2', null, 'Exercise 04: JavaScript&DOM');
 
         const personalInfoContainer = createTagElement('div', null, null);
 
-        const personalInfoTitleElement = createTagElement('p', {
+        const personalInfoTitleElement = createTagElement('span', {
             cursor: 'pointer',
-            width: 'fit-content',
             color: 'pink',
             textDecoration: 'underline'
         }, 'Personal Info');
@@ -81,9 +85,7 @@
         }, null);
 
         personalInfoTitleElement.addEventListener('click', () => toggleElementDisplay(personalInfoListElement));
-
         personalInfoTitleElement.addEventListener('mouseout', (event) => handleMouseOut(event));
-
         personalInfoTitleElement.addEventListener('mouseover', (event) => handleMouseOver(event));
 
         for (const key in personalInfo) {
@@ -94,9 +96,39 @@
         personalInfoContainer.appendChild(personalInfoTitleElement);
         personalInfoContainer.appendChild(personalInfoListElement);
 
+        const snapshotContainer = createTagElement('div', null, null);
+
+        const snapshotTitleElement = createTagElement('h1', null, 'Snapshot');
+
+        const snapshotListElement = createTagElement('ul', null, null);
+
+        snapshots.map((snapshot, index) => {
+            const listItemElement = createTagElement('li', null, null);
+
+            const textElement = createTagElement('span', {
+                cursor: 'pointer',
+                color: 'blue',
+                textDecoration: 'underline'
+            }, snapshot.name);
+
+            textElement.addEventListener('click', () => handleImageChange(snapshot.image));
+
+            listItemElement.appendChild(textElement);
+            snapshotListElement.appendChild(listItemElement);
+        });
+
+        const defaultImage = createTagElement('img', {
+            width: '500px'
+        }, null);
+        defaultImage.src = 'https://www.ce.kmitl.ac.th/api/main/banner/download/1';
+
+        snapshotContainer.appendChild(snapshotTitleElement);
+        snapshotContainer.appendChild(snapshotListElement);
+        snapshotContainer.appendChild(defaultImage);
+
         mainContainer.appendChild(titleElement);
         mainContainer.appendChild(personalInfoContainer);
-
+        mainContainer.appendChild(snapshotContainer);
     </script>
 </body>
 
