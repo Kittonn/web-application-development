@@ -6,6 +6,7 @@
 <body>
     <div id="maincontainer"></div>
     <script>
+        const defaultImageLink = 'https://www.ce.kmitl.ac.th/api/main/banner/download/1';
         const snapshots = [{
             "name": "Fireworks",
             "image": "https://www.arokago.com/_next/image?url=https%3A%2F%2Fbackend.arokago.com%2Fmedia%2Fuploads%2FBest-Places-to-Countdown-and-Watch-Fireworks-for-New-Year-2024-in-Thailand-.png&w=3840&q=75",
@@ -120,7 +121,7 @@
         const defaultImage = createTagElement('img', {
             width: '500px'
         }, null);
-        defaultImage.src = 'https://www.ce.kmitl.ac.th/api/main/banner/download/1';
+        defaultImage.src = defaultImageLink;
 
         snapshotContainer.appendChild(snapshotTitleElement);
         snapshotContainer.appendChild(snapshotListElement);
