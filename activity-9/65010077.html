@@ -29,42 +29,74 @@
             "Semester": "Semester: 2",
         }
 
-        const mainContainerElement = document.getElementById('maincontainer');
+        function createStyledElement(element, style) {
+            for (const key in style) {
+                element.style[key] = style[key];
+            }
+        }
 
-        const titleElement = document.createElement('h2');
-        titleElement.textContent = 'Exercise 04: JavaScript&DOM';
+        function createTagElement(tag, style, textContent) {
+            const element = document.createElement(tag);
+            if (style) {
+                createStyledElement(element, style);
+            }
+            if (textContent) {
+                element.textContent = textContent;
+            }
+            return element;
+        }
 
-        const personalInfoTitleElement = document.createElement('p');
-        personalInfoTitleElement.textContent = 'Personal Info';
-        personalInfoTitleElement.style.cursor = 'pointer';
-        personalInfoTitleElement.addEventListener('mouseover', () => {
-            personalInfoTitleElement.style.color = 'blue';
-            personalInfoTitleElement.style.backgroundColor = 'yellow';
-        });
-        personalInfoTitleElement.addEventListener('mouseout', () => {
-            personalInfoTitleElement.style.color = 'pink';
-            personalInfoTitleElement.style.textDecoration = 'underline';
-        });
+        function toggleElementDisplay(element) {
+            const isHidden = element.style.display === 'none';
+            element.style.display = isHidden ? 'block' : 'none';
+        }
 
-        const personalInfoListElement = document.createElement('ul');
-        personalInfoListElement.style.display = 'none'
+        function handleMouseOut(event) {
+            const element = event.target;
+            element.style.color = 'pink';
+            element.style.backgroundColor = 'white';
+        }
+
+        function handleMouseOver(event) {
+            const element = event.target;
+            element.style.color = 'blue';
+            element.style.backgroundColor = 'yellow';
+        }
+
+        const mainContainer = document.getElementById('maincontainer');
+
+        const titleElement = createTagElement('h2', null, 'Exercise 04: JavaScript&DOM');
+
+        const personalInfoContainer = createTagElement('div', null, null);
+
+        const personalInfoTitleElement = createTagElement('p', {
+            cursor: 'pointer',
+            width: 'fit-content',
+            color: 'pink',
+            textDecoration: 'underline'
+        }, 'Personal Info');
+
+        const personalInfoListElement = createTagElement('ul', {
+            display: 'none'
+        }, null);
+
+        personalInfoTitleElement.addEventListener('click', () => toggleElementDisplay(personalInfoListElement));
+
+        personalInfoTitleElement.addEventListener('mouseout', (event) => handleMouseOut(event));
+
+        personalInfoTitleElement.addEventListener('mouseover', (event) => handleMouseOver(event));
+
         for (const key in personalInfo) {
-            const listItemElement = document.createElement('li');
-            listItemElement.textContent = personalInfo[key];
+            const listItemElement = createTagElement('li', null, personalInfo[key]);
             personalInfoListElement.appendChild(listItemElement);
         }
 
-        personalInfoTitleElement.addEventListener('click', () => {
-            if (personalInfoListElement.style.display === 'none') {
-                personalInfoListElement.style.display = 'block';
-            } else {
-                personalInfoListElement.style.display = 'none';
-            }
-        });
+        personalInfoContainer.appendChild(personalInfoTitleElement);
+        personalInfoContainer.appendChild(personalInfoListElement);
 
-        mainContainerElement.appendChild(titleElement);
-        mainContainerElement.appendChild(personalInfoTitleElement);
-        mainContainerElement.appendChild(personalInfoListElement);
+        mainContainer.appendChild(titleElement);
+        mainContainer.appendChild(personalInfoContainer);
+
     </script>
 </body>
 
