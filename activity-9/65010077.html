@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id="maincontainer"></div>
+    <script>
+        const snapshots = [{
+            "name": "Fireworks",
+            "image": "https://www.arokago.com/_next/image?url=https%3A%2F%2Fbackend.arokago.com%2Fmedia%2Fuploads%2FBest-Places-to-Countdown-and-Watch-Fireworks-for-New-Year-2024-in-Thailand-.png&w=3840&q=75",
+        },
+        {
+            "name": "Crest",
+            "image": "https://images-platform.99static.com//7pXkNFS9ZLMvf8C_qReRbAwW2Ws=/1533x1533:2040x2040/fit-in/500x500/99designs-contests-attachments/147/147502/attachment_147502129"
+        },
+        {
+            "name": "Action",
+            "image": "https://static.bangkokpost.com/media/content/dcx/2023/08/31/4877891.jpg"
+        },
+        {
+            "name": "Buffalo",
+            "image": "https://static.vecteezy.com/system/resources/previews/004/401/937/large_2x/water-buffalo-in-thailand-free-photo.jpg"
+        }]
+
+        const personalInfo = {
+            "name": "Kittipod Lambangchang, ID: 65010077",
+            "Subject": "Subject: Web Application Development",
+            "Semester": "Semester: 2",
+        }
+
+        const mainContainerElement = document.getElementById('maincontainer');
+
+        const titleElement = document.createElement('h2');
+        titleElement.textContent = 'Exercise 04: JavaScript&DOM';
+
+        const personalInfoTitleElement = document.createElement('p');
+        personalInfoTitleElement.textContent = 'Personal Info';
+        personalInfoTitleElement.style.cursor = 'pointer';
+        personalInfoTitleElement.addEventListener('mouseover', () => {
+            personalInfoTitleElement.style.color = 'blue';
+            personalInfoTitleElement.style.backgroundColor = 'yellow';
+        });
+        personalInfoTitleElement.addEventListener('mouseout', () => {
+            personalInfoTitleElement.style.color = 'pink';
+            personalInfoTitleElement.style.textDecoration = 'underline';
+        });
+
+        const personalInfoListElement = document.createElement('ul');
+        personalInfoListElement.style.display = 'none'
+        for (const key in personalInfo) {
+            const listItemElement = document.createElement('li');
+            listItemElement.textContent = personalInfo[key];
+            personalInfoListElement.appendChild(listItemElement);
+        }
+
+        personalInfoTitleElement.addEventListener('click', () => {
+            if (personalInfoListElement.style.display === 'none') {
+                personalInfoListElement.style.display = 'block';
+            } else {
+                personalInfoListElement.style.display = 'none';
+            }
+        });
+
+        mainContainerElement.appendChild(titleElement);
+        mainContainerElement.appendChild(personalInfoTitleElement);
+        mainContainerElement.appendChild(personalInfoListElement);
+    </script>
+</body>
+
+</html>
