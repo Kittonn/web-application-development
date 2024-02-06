@@ -6,6 +6,7 @@
 <body>
     <div id="maincontainer"></div>
     <script>
+        // ---- Constants and Data ----
         const defaultImageLink = 'https://www.ce.kmitl.ac.th/api/main/banner/download/1';
         const snapshots = [{
             "name": "Fireworks",
@@ -30,6 +31,7 @@
             "Semester": "Semester: 2",
         }
 
+        // ---- Functions ----
         function createStyledElement(element, style) {
             for (const key in style) {
                 element.style[key] = style[key];
@@ -69,10 +71,55 @@
             defaultImage.src = image
         }
 
+        function changeStyle(element, style) {
+            for (const key in style) {
+                element.style[key] = style[key];
+            }
+        }
+
+        // ---- Worker ----
+        let worker;
+
+        // ---- Main ----
         const mainContainer = document.getElementById('maincontainer');
 
         const titleElement = createTagElement('h2', null, 'Exercise 04: JavaScript&DOM');
 
+        // ---- Date and Time ----
+        const dateContainer = createTagElement('div', {
+            marginBottom: '20px',
+            height: '30px'
+        }, null);
+
+        const dateButtonElement = createTagElement('button', {
+            cursor: 'pointer'
+        }, 'Click me to display Date and Time');
+
+        dateButtonElement.onclick = function () {
+            if (typeof (worker) === 'undefined') {
+                worker = new Worker('worker.js');
+
+                worker.onmessage = function (event) {
+                    changeStyle(dateButtonElement, {
+                        position: 'fixed',
+                        top: '0',
+                        right: '0',
+                        border: '3px solid black',
+                        color: event.data.colorPair[0],
+                        backgroundColor: event.data.colorPair[1]
+                    })
+                    dateButtonElement.textContent = event.data.dateTime;
+                }
+            } else {
+                worker.terminate();
+                worker = undefined;
+                changeStyle(dateButtonElement, { position: 'static' })
+            }
+        }
+
+        dateContainer.appendChild(dateButtonElement);
+
+        // ---- Personal Info ----
         const personalInfoContainer = createTagElement('div', null, null);
 
         const personalInfoTitleElement = createTagElement('span', {
@@ -97,6 +144,7 @@
         personalInfoContainer.appendChild(personalInfoTitleElement);
         personalInfoContainer.appendChild(personalInfoListElement);
 
+        // ---- Snapshot ----
         const snapshotContainer = createTagElement('div', null, null);
 
         const snapshotTitleElement = createTagElement('h1', null, 'Snapshot');
@@ -127,9 +175,13 @@
         snapshotContainer.appendChild(snapshotListElement);
         snapshotContainer.appendChild(defaultImage);
 
+        // ---- Append to Main Container ----
         mainContainer.appendChild(titleElement);
+        mainContainer.appendChild(dateContainer);
         mainContainer.appendChild(personalInfoContainer);
         mainContainer.appendChild(snapshotContainer);
+
+
     </script>
 </body>
 
