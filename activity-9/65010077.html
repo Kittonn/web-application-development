@@ -4,185 +4,185 @@
 <head></head>
 
 <body>
-    <div id="maincontainer"></div>
-    <script>
-        // ---- Constants and Data ----
-        const defaultImageLink = 'https://www.ce.kmitl.ac.th/api/main/banner/download/1';
-        const snapshots = [{
-            "name": "Fireworks",
-            "image": "https://www.arokago.com/_next/image?url=https%3A%2F%2Fbackend.arokago.com%2Fmedia%2Fuploads%2FBest-Places-to-Countdown-and-Watch-Fireworks-for-New-Year-2024-in-Thailand-.png&w=3840&q=75",
-        },
-        {
-            "name": "Crest",
-            "image": "https://images-platform.99static.com//7pXkNFS9ZLMvf8C_qReRbAwW2Ws=/1533x1533:2040x2040/fit-in/500x500/99designs-contests-attachments/147/147502/attachment_147502129"
-        },
-        {
-            "name": "Action",
-            "image": "https://static.bangkokpost.com/media/content/dcx/2023/08/31/4877891.jpg"
-        },
-        {
-            "name": "Buffalo",
-            "image": "https://static.vecteezy.com/system/resources/previews/004/401/937/large_2x/water-buffalo-in-thailand-free-photo.jpg"
-        }]
+  <div id="maincontainer"></div>
+  <script>
+    // ---- Constants and Data ----
+    const defaultImageLink = 'https://www.ce.kmitl.ac.th/api/main/banner/download/1';
+    const snapshots = [{
+      "name": "Fireworks",
+      "image": "https://www.arokago.com/_next/image?url=https%3A%2F%2Fbackend.arokago.com%2Fmedia%2Fuploads%2FBest-Places-to-Countdown-and-Watch-Fireworks-for-New-Year-2024-in-Thailand-.png&w=3840&q=75",
+    },
+    {
+      "name": "Crest",
+      "image": "https://images-platform.99static.com//7pXkNFS9ZLMvf8C_qReRbAwW2Ws=/1533x1533:2040x2040/fit-in/500x500/99designs-contests-attachments/147/147502/attachment_147502129"
+    },
+    {
+      "name": "Action",
+      "image": "https://static.bangkokpost.com/media/content/dcx/2023/08/31/4877891.jpg"
+    },
+    {
+      "name": "Buffalo",
+      "image": "https://static.vecteezy.com/system/resources/previews/004/401/937/large_2x/water-buffalo-in-thailand-free-photo.jpg"
+    }]
 
-        const personalInfo = {
-            "name": "Kittipod Lambangchang, ID: 65010077",
-            "Subject": "Subject: Web Application Development",
-            "Semester": "Semester: 2",
+    const personalInfo = {
+      "name": "Kittipod Lambangchang, ID: 65010077",
+      "Subject": "Subject: Web Application Development",
+      "Semester": "Semester: 2",
+    }
+
+    // ---- Functions ----
+    function createStyledElement(element, style) {
+      for (const key in style) {
+        element.style[key] = style[key];
+      }
+    }
+
+    function createTagElement(tag, style, textContent) {
+      const element = document.createElement(tag);
+      if (style) {
+        createStyledElement(element, style);
+      }
+      if (textContent) {
+        element.textContent = textContent;
+      }
+      return element;
+    }
+
+    function toggleElementDisplay(element) {
+      const isHidden = element.style.display === 'none';
+      element.style.display = isHidden ? 'block' : 'none';
+    }
+
+    function handleMouseOut(event) {
+      const element = event.target;
+      element.style.color = 'pink';
+      element.style.backgroundColor = 'white';
+    }
+
+    function handleMouseOver(event) {
+      const element = event.target;
+      element.style.color = 'blue';
+      element.style.backgroundColor = 'yellow';
+    }
+
+    function handleImageChange(image) {
+      const defaultImage = document.querySelector('img');
+      defaultImage.src = image
+    }
+
+    function changeStyle(element, style) {
+      for (const key in style) {
+        element.style[key] = style[key];
+      }
+    }
+
+    // ---- Worker ----
+    let worker;
+
+    // ---- Main ----
+    const mainContainer = document.getElementById('maincontainer');
+
+    const titleElement = createTagElement('h2', null, 'Exercise 04: JavaScript&DOM');
+
+    // ---- Date and Time ----
+    const dateContainer = createTagElement('div', {
+      marginBottom: '20px',
+      height: '30px'
+    }, null);
+
+    const dateButtonElement = createTagElement('button', {
+      cursor: 'pointer'
+    }, 'Click me to display Date and Time');
+
+    dateButtonElement.onclick = function () {
+      if (typeof (worker) === 'undefined') {
+        worker = new Worker('worker.js');
+
+        worker.onmessage = function (event) {
+          changeStyle(dateButtonElement, {
+            position: 'fixed',
+            top: '0',
+            right: '0',
+            border: '3px solid black',
+            color: event.data.colorPair[0],
+            backgroundColor: event.data.colorPair[1]
+          })
+          dateButtonElement.textContent = event.data.dateTime;
         }
+      } else {
+        worker.terminate();
+        worker = undefined;
+        changeStyle(dateButtonElement, { position: 'static' })
+      }
+    }
 
-        // ---- Functions ----
-        function createStyledElement(element, style) {
-            for (const key in style) {
-                element.style[key] = style[key];
-            }
-        }
+    dateContainer.appendChild(dateButtonElement);
 
-        function createTagElement(tag, style, textContent) {
-            const element = document.createElement(tag);
-            if (style) {
-                createStyledElement(element, style);
-            }
-            if (textContent) {
-                element.textContent = textContent;
-            }
-            return element;
-        }
+    // ---- Personal Info ----
+    const personalInfoContainer = createTagElement('div', null, null);
 
-        function toggleElementDisplay(element) {
-            const isHidden = element.style.display === 'none';
-            element.style.display = isHidden ? 'block' : 'none';
-        }
+    const personalInfoTitleElement = createTagElement('span', {
+      cursor: 'pointer',
+      color: 'pink',
+      textDecoration: 'underline'
+    }, 'Personal Info');
 
-        function handleMouseOut(event) {
-            const element = event.target;
-            element.style.color = 'pink';
-            element.style.backgroundColor = 'white';
-        }
+    const personalInfoListElement = createTagElement('ul', {
+      display: 'none'
+    }, null);
 
-        function handleMouseOver(event) {
-            const element = event.target;
-            element.style.color = 'blue';
-            element.style.backgroundColor = 'yellow';
-        }
+    personalInfoTitleElement.addEventListener('click', () => toggleElementDisplay(personalInfoListElement));
+    personalInfoTitleElement.addEventListener('mouseout', (event) => handleMouseOut(event));
+    personalInfoTitleElement.addEventListener('mouseover', (event) => handleMouseOver(event));
 
-        function handleImageChange(image) {
-            const defaultImage = document.querySelector('img');
-            defaultImage.src = image
-        }
+    for (const key in personalInfo) {
+      const listItemElement = createTagElement('li', null, personalInfo[key]);
+      personalInfoListElement.appendChild(listItemElement);
+    }
 
-        function changeStyle(element, style) {
-            for (const key in style) {
-                element.style[key] = style[key];
-            }
-        }
+    personalInfoContainer.appendChild(personalInfoTitleElement);
+    personalInfoContainer.appendChild(personalInfoListElement);
 
-        // ---- Worker ----
-        let worker;
+    // ---- Snapshot ----
+    const snapshotContainer = createTagElement('div', null, null);
 
-        // ---- Main ----
-        const mainContainer = document.getElementById('maincontainer');
+    const snapshotTitleElement = createTagElement('h1', null, 'Snapshot');
 
-        const titleElement = createTagElement('h2', null, 'Exercise 04: JavaScript&DOM');
+    const snapshotListElement = createTagElement('ul', null, null);
 
-        // ---- Date and Time ----
-        const dateContainer = createTagElement('div', {
-            marginBottom: '20px',
-            height: '30px'
-        }, null);
+    snapshots.map((snapshot, index) => {
+      const listItemElement = createTagElement('li', null, null);
 
-        const dateButtonElement = createTagElement('button', {
-            cursor: 'pointer'
-        }, 'Click me to display Date and Time');
+      const textElement = createTagElement('span', {
+        cursor: 'pointer',
+        color: 'blue',
+        textDecoration: 'underline'
+      }, snapshot.name);
 
-        dateButtonElement.onclick = function () {
-            if (typeof (worker) === 'undefined') {
-                worker = new Worker('worker.js');
+      textElement.addEventListener('click', () => handleImageChange(snapshot.image));
 
-                worker.onmessage = function (event) {
-                    changeStyle(dateButtonElement, {
-                        position: 'fixed',
-                        top: '0',
-                        right: '0',
-                        border: '3px solid black',
-                        color: event.data.colorPair[0],
-                        backgroundColor: event.data.colorPair[1]
-                    })
-                    dateButtonElement.textContent = event.data.dateTime;
-                }
-            } else {
-                worker.terminate();
-                worker = undefined;
-                changeStyle(dateButtonElement, { position: 'static' })
-            }
-        }
+      listItemElement.appendChild(textElement);
+      snapshotListElement.appendChild(listItemElement);
+    });
 
-        dateContainer.appendChild(dateButtonElement);
+    const defaultImage = createTagElement('img', {
+      width: '500px'
+    }, null);
+    defaultImage.src = defaultImageLink;
 
-        // ---- Personal Info ----
-        const personalInfoContainer = createTagElement('div', null, null);
+    snapshotContainer.appendChild(snapshotTitleElement);
+    snapshotContainer.appendChild(snapshotListElement);
+    snapshotContainer.appendChild(defaultImage);
 
-        const personalInfoTitleElement = createTagElement('span', {
-            cursor: 'pointer',
-            color: 'pink',
-            textDecoration: 'underline'
-        }, 'Personal Info');
-
-        const personalInfoListElement = createTagElement('ul', {
-            display: 'none'
-        }, null);
-
-        personalInfoTitleElement.addEventListener('click', () => toggleElementDisplay(personalInfoListElement));
-        personalInfoTitleElement.addEventListener('mouseout', (event) => handleMouseOut(event));
-        personalInfoTitleElement.addEventListener('mouseover', (event) => handleMouseOver(event));
-
-        for (const key in personalInfo) {
-            const listItemElement = createTagElement('li', null, personalInfo[key]);
-            personalInfoListElement.appendChild(listItemElement);
-        }
-
-        personalInfoContainer.appendChild(personalInfoTitleElement);
-        personalInfoContainer.appendChild(personalInfoListElement);
-
-        // ---- Snapshot ----
-        const snapshotContainer = createTagElement('div', null, null);
-
-        const snapshotTitleElement = createTagElement('h1', null, 'Snapshot');
-
-        const snapshotListElement = createTagElement('ul', null, null);
-
-        snapshots.map((snapshot, index) => {
-            const listItemElement = createTagElement('li', null, null);
-
-            const textElement = createTagElement('span', {
-                cursor: 'pointer',
-                color: 'blue',
-                textDecoration: 'underline'
-            }, snapshot.name);
-
-            textElement.addEventListener('click', () => handleImageChange(snapshot.image));
-
-            listItemElement.appendChild(textElement);
-            snapshotListElement.appendChild(listItemElement);
-        });
-
-        const defaultImage = createTagElement('img', {
-            width: '500px'
-        }, null);
-        defaultImage.src = defaultImageLink;
-
-        snapshotContainer.appendChild(snapshotTitleElement);
-        snapshotContainer.appendChild(snapshotListElement);
-        snapshotContainer.appendChild(defaultImage);
-
-        // ---- Append to Main Container ----
-        mainContainer.appendChild(titleElement);
-        mainContainer.appendChild(dateContainer);
-        mainContainer.appendChild(personalInfoContainer);
-        mainContainer.appendChild(snapshotContainer);
+    // ---- Append to Main Container ----
+    mainContainer.appendChild(titleElement);
+    mainContainer.appendChild(dateContainer);
+    mainContainer.appendChild(personalInfoContainer);
+    mainContainer.appendChild(snapshotContainer);
 
 
-    </script>
+  </script>
 </body>
 
 </html>
