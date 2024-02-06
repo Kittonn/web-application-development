@@ -31,6 +31,8 @@
       "Semester": "Semester: 2",
     }
 
+    let onTime = false;
+
     // ---- Functions ----
     function createStyledElement(element, style) {
       for (const key in style) {
@@ -78,7 +80,7 @@
     }
 
     // ---- Worker ----
-    let worker;
+    let worker = new Worker('worker.js');
 
     // ---- Main ----
     const mainContainer = document.getElementById('maincontainer');
@@ -96,9 +98,8 @@
     }, 'Click me to display Date and Time');
 
     dateButtonElement.onclick = function () {
-      if (typeof (worker) === 'undefined') {
-        worker = new Worker('worker.js');
-
+      if (!onTime) {
+        worker.postMessage('start')
         worker.onmessage = function (event) {
           changeStyle(dateButtonElement, {
             position: 'fixed',
@@ -109,11 +110,12 @@
             backgroundColor: event.data.colorPair[1]
           })
           dateButtonElement.textContent = event.data.dateTime;
+          onTime = true;
         }
       } else {
-        worker.terminate();
-        worker = undefined;
+        worker.postMessage('stop')
         changeStyle(dateButtonElement, { position: 'static' })
+        onTime = false;
       }
     }
 

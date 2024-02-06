@@ -9,15 +9,32 @@ const colorPairs = [
 
 let colorIndex = 0;
 const colorPairLength = colorPairs.length;
+let timer = null;
 
-function timer() {
-  const now = new Date();
-  postMessage({
-    dateTime: now,
-    colorPair: colorPairs[colorIndex++ % colorPairLength],
-  });
+function startTimer() {
+  const postColorUpdate = () => {
+    const now = new Date();
+    postMessage({
+      dateTime: now,
+      colorPair: colorPairs[colorIndex++ % colorPairLength],
+    });
+  };
 
-  setTimeout(timer, 1000);
+  postColorUpdate();
+
+  timer = setInterval(postColorUpdate, 1000);
 }
 
-timer();
+function stopTimer() {
+  clearInterval(timer);
+}
+
+self.onmessage = function (e) {
+  if (e.data === "start") {
+    startTimer();
+  }
+
+  if (e.data === "stop") {
+    stopTimer();
+  }
+};
