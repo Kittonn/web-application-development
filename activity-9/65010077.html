@@ -6,7 +6,6 @@
 <body>
   <div id="maincontainer"></div>
   <script>
-    // ---- Constants and Data ----
     const defaultImageLink = 'https://www.ce.kmitl.ac.th/api/main/banner/download/1';
     const snapshots = [{
       "name": "Fireworks",
@@ -33,7 +32,6 @@
 
     let onTime = false;
 
-    // ---- Functions ----
     function createStyledElement(element, style) {
       for (const key in style) {
         element.style[key] = style[key];
@@ -79,15 +77,12 @@
       }
     }
 
-    // ---- Worker ----
     let worker = new Worker('worker.js');
 
-    // ---- Main ----
     const mainContainer = document.getElementById('maincontainer');
 
     const titleElement = createTagElement('h2', null, 'Exercise 04: JavaScript&DOM');
 
-    // ---- Date and Time ----
     const dateContainer = createTagElement('div', {
       marginBottom: '20px',
       height: '30px'
@@ -121,7 +116,6 @@
 
     dateContainer.appendChild(dateButtonElement);
 
-    // ---- Personal Info ----
     const personalInfoContainer = createTagElement('div', null, null);
 
     const personalInfoTitleElement = createTagElement('span', {
@@ -146,7 +140,6 @@
     personalInfoContainer.appendChild(personalInfoTitleElement);
     personalInfoContainer.appendChild(personalInfoListElement);
 
-    // ---- Snapshot ----
     const snapshotContainer = createTagElement('div', null, null);
 
     const snapshotTitleElement = createTagElement('h1', null, 'Snapshot');
@@ -177,12 +170,10 @@
     snapshotContainer.appendChild(snapshotListElement);
     snapshotContainer.appendChild(defaultImage);
 
-    // ---- Append to Main Container ----
     mainContainer.appendChild(titleElement);
     mainContainer.appendChild(dateContainer);
     mainContainer.appendChild(personalInfoContainer);
     mainContainer.appendChild(snapshotContainer);
-
 
   </script>
 </body>
