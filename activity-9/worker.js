@@ -1,10 +1,10 @@
 const colorPairs = [
-  ["#ccccff", "#ffcccc"],
-  ["#33ff99", "#99ff33"],
-  ["#ff99ff", "#99ffff"],
-  ["#ff6633", "#33ff66"],
-  ["#ffff66", "#66ffff"],
-  ["#ff9933", "#33ff99"],
+  ["#FF0000", "#FFFFFF"],
+  ["#00FF00", "#0000FF"],
+  ["#FFFF00", "#808080"],
+  ["#800080", "#000000"],
+  ["#00FFFF", "#FF00FF"],
+  ["#FFA500", "#ADD8E6"],
 ];
 
 let colorIndex = 0;

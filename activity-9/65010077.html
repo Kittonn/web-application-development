@@ -6,6 +6,16 @@
 <body>
   <div id="maincontainer"></div>
   <script>
+    const styleElement = document.createElement('style');
+
+    styleElement.textContent = `
+    a:active, a:visited {
+      color: blue;
+    }
+    `
+
+    document.head.appendChild(styleElement);
+
     const defaultImageLink = 'https://www.ce.kmitl.ac.th/api/main/banner/download/1';
     const snapshots = [{
       "name": "Fireworks",
@@ -40,12 +50,14 @@
 
     function createTagElement(tag, style, textContent) {
       const element = document.createElement(tag);
+      
       if (style) {
         createStyledElement(element, style);
       }
       if (textContent) {
         element.textContent = textContent;
       }
+
       return element;
     }
 
@@ -56,7 +68,7 @@
 
     function handleMouseOut(event) {
       const element = event.target;
-      element.style.color = 'pink';
+      element.style.color = 'plum';
       element.style.backgroundColor = 'white';
     }
 
@@ -77,20 +89,17 @@
       }
     }
 
+
+
     let worker = new Worker('worker.js');
 
     const mainContainer = document.getElementById('maincontainer');
 
     const titleElement = createTagElement('h2', null, 'Exercise 04: JavaScript&DOM');
 
-    const dateContainer = createTagElement('div', {
-      marginBottom: '20px',
-      height: '30px'
-    }, null);
+    const dateContainer = createTagElement('div', { marginBottom: '20px', height: '30px' }, null);
 
-    const dateButtonElement = createTagElement('button', {
-      cursor: 'pointer'
-    }, 'Click me to display Date and Time');
+    const dateButtonElement = createTagElement('button', null, 'Click me to display Date and Time');
 
     dateButtonElement.onclick = function () {
       if (!onTime) {
@@ -118,11 +127,11 @@
 
     const personalInfoContainer = createTagElement('div', null, null);
 
-    const personalInfoTitleElement = createTagElement('span', {
-      cursor: 'pointer',
-      color: 'pink',
-      textDecoration: 'underline'
-    }, 'Personal Info');
+    const personalInfoTitleElement = createTagElement('a', { color: 'plum', }, 'Personal Info');
+    personalInfoTitleElement.href = '#';
+    personalInfoTitleElement.onclick = () => {
+      return false;
+    }
 
     const personalInfoListElement = createTagElement('ul', {
       display: 'none'
@@ -149,11 +158,12 @@
     snapshots.map((snapshot, index) => {
       const listItemElement = createTagElement('li', null, null);
 
-      const textElement = createTagElement('span', {
-        cursor: 'pointer',
-        color: 'blue',
-        textDecoration: 'underline'
+      const textElement = createTagElement('a', {
       }, snapshot.name);
+      textElement.href = snapshot.image;
+      textElement.onclick = () => {
+        return false;
+      }
 
       textElement.addEventListener('click', () => handleImageChange(snapshot.image));
 
@@ -161,9 +171,7 @@
       snapshotListElement.appendChild(listItemElement);
     });
 
-    const defaultImage = createTagElement('img', {
-      width: '500px'
-    }, null);
+    const defaultImage = createTagElement('img', { width: '500px' }, null);
     defaultImage.src = defaultImageLink;
 
     snapshotContainer.appendChild(snapshotTitleElement);
@@ -174,7 +182,6 @@
     mainContainer.appendChild(dateContainer);
     mainContainer.appendChild(personalInfoContainer);
     mainContainer.appendChild(snapshotContainer);
-
   </script>
 </body>
 
