@@ -1,13 +1,13 @@
 import React from "react";
 
 class MyButton extends React.Component {
-  helloWorld(message) {
-    alert(message);
+  helloWorld() {
+    alert("Hello world!");
   }
   render() {
     return (
-      <button type="button" onClick={() => this.helloWorld(this.props.text)}>
-        {this.props.text}
+      <button type="button" onClick={this.helloWorld}>
+        Click Me!
       </button>
     );
   }
