@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./App.css";
 
 export default class App extends Component {
   constructor() {
@@ -25,18 +26,32 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        {this.foods.map((food) => {
-          return (
-            <Card
-              key={food.id}
-              category={food.category}
-              name={food.name}
-              info={food.info}
-              image={food.image}
-            />
-          );
-        })}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(1, 1fr)",
+          }}
+        >
+          {this.foods.map((food) => {
+            return (
+              <Card
+                key={food.id}
+                category={food.category}
+                name={food.name}
+                info={food.info}
+                image={food.image}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }
@@ -48,27 +63,56 @@ class Card extends Component {
   };
 
   handleCallback = (count) => {
-    if (this.state.vote === 10 && count === 1) alert("Cannot vote more");
+    if (this.state.vote === 10 && count === 1) {
+      alert("Cannot vote more");
+      return;
+    }
 
-    if (this.state.vote === 0 && count === -1) alert("Cannot unvote");
+    if (this.state.vote === 0 && count === -1) {
+      alert("Cannot unvote");
+      return;
+    }
 
     this.setState({ vote: this.state.vote + count });
   };
 
   render() {
     return (
-      <div>
-        <div>
+      <div
+        style={{
+          backgroundColor: "moccasin",
+          border: "3px solid black",
+          borderRadius: "1rem",
+          maxWidth: "750px",
+          padding: "1.5rem",
+        }}
+      >
+        <div style={{ display: "flex", gap: "0.5rem" }}>
           <div>
             <h2>{this.props.category}</h2>
             <h3>{this.props.name}</h3>
             <p>{this.props.info}</p>
           </div>
-          <div>
-            <img src={this.props.image} alt={this.props.name} />
+          <div
+            style={{
+              minWidth: "250px",
+            }}
+          >
+            <img
+              src={this.props.image}
+              alt={this.props.name}
+              style={{ width: "100%" }}
+            />
           </div>
         </div>
-        <div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "0.75rem",
+          }}
+        >
           <Button text="Click to Vote" callback={this.handleCallback} />
           <VoteDisplay vote={this.state.vote} />
           <Button text="Click to Unvote" callback={this.handleCallback} />
@@ -88,14 +132,27 @@ class Button extends Component {
   };
 
   render() {
-    return <button onClick={this.handleOnClick}>{this.props.text}</button>;
+    return (
+      <button style={{ padding: "0.3rem" }} onClick={this.handleOnClick}>
+        {this.props.text}
+      </button>
+    );
   }
 }
 
 class VoteDisplay extends Component {
   render() {
     return (
-      <h2>
+      <h2
+        style={{
+          backgroundColor: "#3be833",
+          color: "purple",
+          border: "2px solid black",
+          padding: "0.5rem",
+          margin: "0",
+          borderRadius: "0.5rem",
+        }}
+      >
         {this.props.vote === 0
           ? "MIN"
           : this.props.vote === 10
