@@ -1,5 +1,8 @@
 import { Component } from "react";
-import "./App.css";
+
+document.body.style.backgroundColor = "gray";
+document.body.style.margin = "0";
+document.body.style.padding = "0";
 
 export default class App extends Component {
   constructor() {
@@ -9,7 +12,7 @@ export default class App extends Component {
         id: 0,
         category: "อาหารคาว",
         name: "ชาบู",
-        info: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod..",
+        info: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod.",
         image:
           "https://hello2day.com/wp-content/uploads/2022/01/nj-shabu-shabu-pattaya-delivery-21.jpg",
       },
@@ -26,31 +29,32 @@ export default class App extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(1, 1fr)",
-          }}
+      <div>
+        <h1
+          style={{ textAlign: "center", color: "#ffc300", margin: "2.5rem 0" }}
         >
-          {this.foods.map((food) => {
-            return (
-              <Card
-                key={food.id}
-                category={food.category}
-                name={food.name}
-                info={food.info}
-                image={food.image}
-              />
-            );
-          })}
+          โหวตอาหาร
+        </h1>
+        <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            {this.foods.map((food) => {
+              return (
+                <Card
+                  key={food.id}
+                  category={food.category}
+                  name={food.name}
+                  info={food.info}
+                  image={food.image}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     );
@@ -80,7 +84,7 @@ class Card extends Component {
     return (
       <div
         style={{
-          backgroundColor: "moccasin",
+          backgroundColor: "blanchedalmond",
           border: "3px solid black",
           borderRadius: "1rem",
           maxWidth: "750px",
