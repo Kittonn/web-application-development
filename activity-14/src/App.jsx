@@ -43,6 +43,18 @@ export default class App extends Component {
 }
 
 class Card extends Component {
+  state = {
+    vote: 0,
+  };
+
+  handleCallback = (count) => {
+    if (this.state.vote === 10 && count === 1) alert("Cannot vote more");
+
+    if (this.state.vote === 0 && count === -1) alert("Cannot unvote");
+
+    this.setState({ vote: this.state.vote + count });
+  };
+
   render() {
     return (
       <div>
@@ -57,9 +69,9 @@ class Card extends Component {
           </div>
         </div>
         <div>
-          <Button text="Click to Vote" />
-          <Display vote={10} />
-          <Button text="Click to Unvote" />
+          <Button text="Click to Vote" callback={this.handleCallback} />
+          <VoteDisplay vote={this.state.vote} />
+          <Button text="Click to Unvote" callback={this.handleCallback} />
         </div>
       </div>
     );
@@ -67,12 +79,20 @@ class Card extends Component {
 }
 
 class Button extends Component {
+  handleOnClick = (e) => {
+    if (e.target.innerText === "Click to Vote") {
+      this.props.callback(1);
+    } else {
+      this.props.callback(-1);
+    }
+  };
+
   render() {
-    return <button>{this.props.text}</button>;
+    return <button onClick={this.handleOnClick}>{this.props.text}</button>;
   }
 }
 
-class Display extends Component {
+class VoteDisplay extends Component {
   render() {
     return (
       <h2>
